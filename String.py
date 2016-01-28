@@ -39,15 +39,19 @@ class String:
 
     @staticmethod
     def Compare(value1, value2):
-        if String.IsString(value1) and String.IsString(value2):
+        if IsValidValues(value1, value2):
             if value1 == value2:
                 return True
             return False
         return False
 
+
     @staticmethod
-    def Concat(value1, value2):
-        return "{0} {1}".format(str(value1), str(value2))
+    def Concat(*values):
+        finalString = String.value
+        for v in values:
+            finalString = "{0} {1}".format(finalString, str(v))
+        return finalString
 
     #Metodos Conctar indefinido with for
     @staticmethod
@@ -82,15 +86,30 @@ class String:
 
     @staticmethod
     def RemoveToIndex(value1, index):
-        if String.IsString(value1):
+        if IsValidValues(value1):
             finalValue = String.value
             for i in range(0,len(value1)):
                 if i != index:
                     finalValue += value1[i]
             return finalValue
+
     @staticmethod
     def Count(value):
         return len(value)
 
+    @staticmethod
+    def Count(value1, value2):
+        if IsValidValues(value1, value2):
+            pass
+        return None
+
+    @staticmethod
+    def IsValidValues(*values):
+        flag = True
+        for value in values:
+            if String.IsString(value) == False:
+                return False
+        return flag
+
 valor = String.Empty()
-print ("Remove  : " + str(String.RemoveToIndex("Eduardo", 4)) )
+print ("Concat  : " + str(String.Concat("Eduardo", 4, "Lalo", "Eddad")) )
