@@ -25,7 +25,7 @@ class String:
         String.customValue = value
 
     @staticmethod
-    def GetValue():
+    def GetDefaultValue():
         return String.customValue
 
     @staticmethod
@@ -39,12 +39,22 @@ class String:
 
     @staticmethod
     def Compare(value1, value2):
-        if IsValidValues(value1, value2):
+        if String.IsValidValues(value1, value2):
             if value1 == value2:
                 return True
             return False
-        return False
+        return None
 
+    @staticmethod
+    def CompareValues(*values):
+        pass
+
+    @staticmethod
+    def Copy(value):
+        finalValue = String.value
+        for v in value:
+            finalValue += v
+        return finalValue
 
     @staticmethod
     def Concat(*values):
@@ -86,7 +96,7 @@ class String:
 
     @staticmethod
     def RemoveToIndex(value1, index):
-        if IsValidValues(value1):
+        if String.IsValidValues(value1):
             finalValue = String.value
             for i in range(0,len(value1)):
                 if i != index:
@@ -99,9 +109,13 @@ class String:
 
     @staticmethod
     def Count(value1, value2):
-        if IsValidValues(value1, value2):
+        if String.IsValidValues(value1, value2):
             pass
         return None
+
+    @staticmethod
+    def IsValidValue(value):
+        return String.IsValidValues(value)
 
     @staticmethod
     def IsValidValues(*values):
@@ -111,5 +125,25 @@ class String:
                 return False
         return flag
 
+    @staticmethod
+    def Repeat(values, chain):
+        pass
+
+    @staticmethod
+    def EndsWith(value, chain):
+        if String.IsValidValues(value):
+            if value[ len(value)-1] == str(chain):
+                return True
+            return False
+        return None
+
+    @staticmethod
+    def StartWith(value, chain):
+        if String.IsValidValues(value):
+            if value[0] == str(chain):
+                return True
+            return False
+        return None
+
 valor = String.Empty()
-print ("Concat  : " + str(String.Concat("Eduardo", 4, "Lalo", "Eddad")) )
+print ("Copy  : " + str(String.Copy("Eduardo")) )
