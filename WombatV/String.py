@@ -68,7 +68,7 @@ class String:
             return  value[-1]
 
     @staticmethod
-    def GetLastFirts(value):
+    def GetFirtsIndex(value):
         if String.IsString(value):
             return  value[0]
 
@@ -146,6 +146,3 @@ class String:
                 return True
             return False
         return None
-
-valor = String.Repeat("ud ud ud ud ud", "ud")
-print ("Copy  : " + str(valor) )
