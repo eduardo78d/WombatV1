@@ -1,6 +1,7 @@
 class String:
     value = ""
     customValue = ""
+    space = " "
 
     @staticmethod
     def Any(value, chain):
@@ -71,6 +72,21 @@ class String:
     def GetFirtsIndex(value):
         if String.IsString(value):
             return  value[0]
+
+    @staticmethod
+    def MoreCommonWord(value):
+        finalWord = String.Empty()
+        finalRepeat = 0
+
+        for w in value.split(" "):
+            r = String.Repeat(value, w) - 1
+            if r > finalRepeat:
+                finalWord, finalRepeat = w, r
+        return [finalWord, finalRepeat]
+
+    @staticmethod
+    def MoreCommonsWord(value, number): #Refactor
+       pass
 
     @staticmethod
     def GetChainToIndex(value, index):
