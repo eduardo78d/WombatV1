@@ -1,164 +1,108 @@
 class String:
-    value = ""
-    customValue = ""
-    space = " "
+    custom_value = ""
 
     @staticmethod
-    def Any(value, chain):
-        if chain in value:
-            return True
-        return False
+    def any(value, chain):
+        return chain in value
 
     @staticmethod
-    def Concat(*values):
-        finalString = String.value
+    def concat(*values):
+        final_string = ""
         for v in values:
-            finalString = "{0} {1}".format(finalString, str(v))
-        return finalString
+            final_string = "{0} {1}".format(final_string, str(v))
+        return final_string
 
     @staticmethod
-    def Count(value):
+    def count(value):
         return len(value)
 
     @staticmethod
-    def Compare(value1, value2):
-        if String.IsValidValues(value1, value2):
-            if value1 == value2:
-                return True
-            return False
-        return None
-
+    def compare(value1, value2):
+        return value1 == value2
+            
     @staticmethod
-    def CompareValues(*values):
+    def compare_values(*values):
         for v in values:
             if v != values[0]:
                 return False
         return True
 
     @staticmethod
-    def Copy(value):
-        finalValue = String.value
-        for v in value:
-            finalValue += v
-        return finalValue
+    def empty():
+        return ""
 
     @staticmethod
-    def Empty():
-        return String.value
+    def ends_with(value, chain):
+        return value[ len(value)-1] == str(chain)
+            
+    @classmethod
+    def get_default_value(cls):
+        return cls.custom_value
 
     @staticmethod
-    def EndsWith(value, chain):
-        if String.IsValidValues(value):
-            if value[ len(value)-1] == str(chain):
-                return True
-            return False
-        return None
-
-    #Metodos Conctar indefinido with for
+    def get_last_index(value):
+        return value[-1]
+        
     @staticmethod
-    def GetHasCode(value):
-        return "code"
+    def get_firts_index(value):
+        return  value[0]
 
     @staticmethod
-    def GetDefaultValue():
-        return String.customValue
+    def more_common_word(value):
+       words = value.lower().split(" ")
 
     @staticmethod
-    def GetLastIndex(value):
-        if String.IsString(value):
-            return  value[-1]
+    def more_common_character(value):
+       value = 0
+       common_character = ""
+       for v in value:
+        if value.count(v) > value:
+            value = v
+            common_character = v
+        return common_character
 
     @staticmethod
-    def GetFirtsIndex(value):
-        if String.IsString(value):
-            return  value[0]
+    def get_chain_to_index(value, index):
+        return value[index:]
 
     @staticmethod
-    def MoreCommonWord(value):
-        finalWord = String.Empty()
-        finalRepeat = 0
-
-        for w in value.split(" "):
-            r = String.Repeat(value, w) - 1
-            if r > finalRepeat:
-                finalWord, finalRepeat = w, r
-        return [finalWord, finalRepeat]
-
-    @staticmethod
-    def MoreCommonsWord(value, number): #Refactor
-       pass
-
-    @staticmethod
-    def GetChainToIndex(value, index):
-        if String.IsString(value):
-            return value[index:]
-
-    @staticmethod
-    def IndexOf(value, index):
+    def index_of(value, index):
         try:
             return value[index]
         except Exception as e:
             return None
 
     @staticmethod
-    def IsEmpty(value):
-        if value == String.Value:
-            return True
-        return False
-
+    def is_empty(value):
+        return value == ""
+            
     @staticmethod
-    def IsNullOrEmpty(value):
-        if Value == String.Value or Value == None:
-            return True
-        return False
-
+    def is_None_or_empty(value):
+        return value == "" or value == None:
+            
     @staticmethod
-    def IsString(value):
-        if type(value) == type(String.value):
-            return True
-        return False
-
+    def is_string(value):
+        return type(value) == type(""):
+            
     @staticmethod
-    def IsValidValue(value):
-        return String.IsValidValues(value)
-
-    @staticmethod
-    def IsValidValues(*values):
-        flag = True
+    def is_valid_values(*values):
         for value in values:
-            if not String.IsString(value):
+            if type(value) == type(""):
                 return False
-        return flag
+        return True
 
     @staticmethod
-    def RemoveToIndex(value1, index):
-        if String.IsValidValues(value1):
-            finalValue = String.value
-            for i in range(0,len(value1)):
-                if i != index:
-                    finalValue += value1[i]
-            return finalValue
+    def remove_to_index(value, index):
+        final_string = ""
+        for idx, val in enumerate(value):
+            if idx != index:
+                final_string = "{}{}".format(final_string, val)
+        return final_string          
+
+    @classmethod
+    def set_default_value(cls, value):
+        cls.custom_value = value
 
     @staticmethod
-    def Repeat(value, chain):
-        defaultInt = 0
-        count = defaultInt
-        if not String.Any(value, chain):
-            return count
-
-        for i in range(defaultInt,len(value)):
-            if String.Any( value[i:i + len(chain)],  chain):
-                count += 1
-        return count
-
-    @staticmethod
-    def SetDefaultValue(value):
-        String.customValue = value
-
-    @staticmethod
-    def StartWith(value, chain):
-        if String.IsValidValues(value):
-            if value[0] == str(chain):
-                return True
-            return False
-        return None
+    def start_with(value, chain):
+        return value[0:len(chain)] == chain

@@ -1,42 +1,36 @@
 import sys
 class Int:
-    value = 0
-    customValue = 0
+    custome_value = 0
+
+    """ Some common methods for the class Int """
+    @staticmethod
+    def compare(value1, value2):
+        return Int.is_int(value1) and Int.is_int(value2) and value1 == value2:
+            
+    @staticmethod
+    def default_value():
+        return 0
+
+    @classmethod
+    def get_default_value(cls):
+        return cls.custome_value
 
     @staticmethod
-    def Compare(value1, value2):
-        if Int.IsInt(value1) and Int.IsInt(value2):
-            if value1 == value2 :
-                return True
-            return False
-        return None
-
-    @staticmethod
-    def DefualValue():
-        return Int.value
-
-    @staticmethod
-    def GetDefaultValue():
-        return Int.customValue
-
-    @staticmethod
-    def Google():
+    def google():
         return 10**100
 
     @staticmethod
-    def IsInt(value):
-        if type(value) == type(Int.value):
-            return True
-        return False
-
+    def is_int(value):
+        return type(value) == type(0):
+        
     @staticmethod
-    def MinValue():
+    def min_value():
         return -sys.maxint
 
     @staticmethod
-    def MaxValue():
+    def max_value():
         return sys.maxint
 
-    @staticmethod
-    def SetDefaulValue(value):
-        Int.customValue = value
+    @classmethod
+    def set_defaul_value(cls, value):
+        cls.custome_value = value
